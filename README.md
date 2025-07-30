@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js & microCMS Blog
 
-## Getting Started
+![ブログトップページのスクリーンショット](./images/screenshot.png)
 
-First, run the development server:
+## 概要
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+このプロジェクトは、Next.js (App Router), TypeScript, Tailwind CSS を使用して作成した、ヘッドレスCMS (microCMS) と連携するブログアプリケーションです。
+Next.jsの学習アウトプットとして、モダンなWeb開発の基本的な要素を盛り込んでいます。
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 主な機能
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+-   **ブログ記事表示:** microCMSから取得した記事の一覧および詳細ページを表示
+-   **SSG (静的サイト生成):** ビルド時にCMSからデータを取得し、高速な静的ページを生成
+-   **コメント機能:** giscus (GitHub Discussions連携) を利用したコメントシステムの導入
+-   **レスポンシブデザイン:** Tailwind CSSによる、PC・スマートフォン両対応のデザイン
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 使用技術 (技術スタック)
 
-## Learn More
+-   **フレームワーク:** Next.js 14+ (App Router)
+-   **言語:** TypeScript
+-   **スタイリング:** Tailwind CSS, @tailwindcss/typography
+-   **CMS:** microCMS
+-   **コメントシステム:** giscus (@giscus/react)
+-   **パッケージ管理:** npm / pnpm
 
-To learn more about Next.js, take a look at the following resources:
+## 環境構築
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1.  リポジトリをクローンします。
+    ```bash
+    git clone https://github.com/rrencanno/nextjs-blog-ts.git
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2.  プロジェクトディレクトリに移動し、依存パッケージをインストールします。
+    ```bash
+    cd nextjs-blog-ts
+    npm install
+    ```
 
-## Deploy on Vercel
+3.  `.env.local` ファイルを作成します。
+    プロジェクトのルートに `.env.local` ファイルを作成し、以下の内容を記述してください。
+    `MICROCMS_SERVICE_DOMAIN` と `MICROCMS_API_KEY` は、ご自身のmicroCMS管理画面から取得してください。
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    ```dotenv
+    # .env.local
+    MICROCMS_SERVICE_DOMAIN="YOUR_SERVICE_DOMAIN"
+    MICROCMS_API_KEY="YOUR_API_KEY"
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4.  開発サーバーを起動します。
+    ```bash
+    npm run dev
+    ```
+
+5.  ブラウザで [http://localhost:3000](http://localhost:3000) を開きます。
+
+## 工夫した点・学んだこと
+
+-   **ヘッドレスCMS連携:** ローカルのファイルではなく、外部のヘッドレスCMS (microCMS) からAPI経由でデータを取得することで、コンテンツ管理とフロントエンドを分離した開発を経験しました。
+-   **TypeScriptの活用:** `props` やAPIレスポンスのデータに型を定義することで、開発中のエラーを減らし、コードの安全性を高めることの重要性を学びました。
+-   **外部サービス連携:** giscusを導入することで、バックエンドを自前で構築することなく、インタラクティブな機能を迅速に追加できることを学びました。
