@@ -1,4 +1,4 @@
-'use client'; // ★重要★ これはクライアントコンポーネントであると宣言
+'use client';
 
 import Giscus from '@giscus/react';
 

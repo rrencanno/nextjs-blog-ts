@@ -14,19 +14,6 @@ export default function Header() {
                 Home
               </Link>
             </li>
-            {/* AboutとContactはまだ作っていないので、一旦コメントアウトしておくと親切 */}
-            {/* 
-            <li>
-              <Link href="/about" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                About
-              </Link>
-            </li>
-            <li>
-              <Link href="/contact" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                Contact
-              </Link>
-            </li>
-            */}
           </ul>
         </nav>
       </div>
