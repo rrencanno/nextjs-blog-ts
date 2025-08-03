@@ -1,15 +1,21 @@
 import { getBlogDetail } from "../../../../lib/client";
-import Comments from "@/app/components/Comments"; // Commentsコンポーネントをインポート
+import Comments from "@/app/components/Comments";
+import { Metadata } from 'next';
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
-  const blog = await getBlogDetail(params.id);
-  return {
-    title: blog.title,
+type Props = {
+    params: { id: string };
+    searchParams: { [key: string]: string | string[] | undefined };
   };
-}
 
-export default async function Post({ params }: { params: { id: string } }) {
-  const blog = await getBlogDetail(params.id);
+  export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const blog = await getBlogDetail(params.id);
+    return {
+      title: blog.title,
+    };
+  }
+
+export default async function Post({ params }: Props) {
+    const blog = await getBlogDetail(params.id);
 
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 md:p-12">
