@@ -1,6 +1,13 @@
-import { getBlogDetail } from "../../../../lib/client";
+import { getBlogDetail, getBlogs } from "../../../../lib/client";
 import Comments from "@/app/components/Comments";
 import type { Metadata } from "next";
+
+export async function generateStaticParams() {
+    const data = await getBlogs();
+    return data.contents.map((blog) => ({
+      id: blog.id,
+    }));
+  }
 
 export async function generateMetadata({
   params,
